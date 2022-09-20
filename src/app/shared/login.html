@@ -1,0 +1,36 @@
+<div class="login-bg">
+  <div class="grid-row">
+    <div class="left grid-col-6"></div>
+    <div class="right grid-col-6">
+      <div class="login-area-logo"></div>
+      <div class="login-header-text">
+        Sign in to your account
+      </div>
+      <div class="login-form">
+        <div class="login-instruction"> Please enter your credentials</div>
+        <form name="loginForm" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+          <div class="grid-row" style="height: 100%">
+            <div class="grid-col-12">
+              <input type="email" name="username" placeholder="Email Address" [(ngModel)]="userCredential.username" required>
+            </div>
+          </div>
+          <div class="grid-row" style="height: 100%; margin-top: 8px; margin-bottom: 5px;">
+            <div class="grid-col-12">
+              <input type="password" name="password" placeholder="Password" [(ngModel)]="userCredential.password" required>
+            </div>
+          </div>
+          <div class="grid-row" style="height: 100%; margin-top: 8px; margin-bottom: 5px;">
+            <a class="forgot-password">Forgot Password?</a>
+          </div>
+          <div class="">
+            <button type="submit" name="button" style="background-color: #77362a;">Sign In</button>
+          </div>
+        </form>
+        <div class="no-account">
+          <span>Don't have an account? </span>
+          <a >Sign up</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

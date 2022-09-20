@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { LoginComponent } from './shared/index';
+
+const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  // otherwise redirect to login
+  // TODO: should create a dashbord component that redirects to '/pets' when LoggedIn or '/login' when not
+  { path: '**', redirectTo: 'login' }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

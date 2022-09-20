@@ -1,0 +1,94 @@
+.login-bg {
+  background-color: #f7f7f7;
+  height: 100vh;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/assets/istockphoto-909306888-612x612.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 60%;
+  margin-right: 30px;
+}
+
+.login-area-logo {
+  margin-top: 110px;
+  margin-bottom: 37.6px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 138px;
+  width: 168px;
+  background-image: url(/assets/logo.png);
+}
+
+.login-header-text {
+  max-width: 433px;
+  min-height: 158px;
+  font-family: Lato;
+  font-size: 72px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  color: #3f3f3f;
+}
+
+.login-instruction {
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.56;
+    letter-spacing: normal;
+    color: #666666;
+    margin-bottom: 17px;
+}
+
+input {
+  border-radius: 5px !important;
+  width: 506px;
+  height: 48px;
+  padding: 0px 0px 0px 21px !important;
+  border: solid 1px #cfdae3 !important;
+  background-color: #ffffff !important;
+  font-family: Lato;
+  font-size: 16px;
+}
+
+.forgot-password {
+    height: 20px;
+    opacity: 0.75;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    color: #3f3f3f;
+    border: none;
+    outline: none;
+    margin-bottom: 50px;
+}
+
+.no-account {
+  height: 56px;
+  margin: 12px 0px 0px 0px;
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.56;
+  letter-spacing: normal;
+  color: #a3b5c5;
+}

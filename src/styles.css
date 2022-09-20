@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+html { height: 100%; overflow:auto; }
+body{
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  height: 100%;
+  background-color: #edf2f3;
+  color: #3f3f3f;
+  font-family: "Lato", sans-serif;
+  line-height: 1.44;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: none;
+}
+
+a {
+  color: #414141;
+  cursor: pointer;
+  text-decoration: none;
+}
