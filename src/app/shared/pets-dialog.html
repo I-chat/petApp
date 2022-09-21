@@ -1,0 +1,91 @@
+<ng-container *ngIf='!data.id'>
+  <h2 style="margin-left: 10px">Add a new Pet</h2>
+  <div mat-dialog-content>
+    <mat-form-field appearance='fill'>
+      <mat-label>Kind of pet</mat-label>
+      <input [(ngModel)]='category' matInput #input placeholder='Ex. Dog'>
+    </mat-form-field>
+    <mat-form-field appearance='fill'>
+      <mat-label>Pet name</mat-label>
+      <input [(ngModel)]='name' matInput #input placeholder='Ex. doggie'>
+    </mat-form-field>
+    <mat-form-field appearance='fill' class='chip-photos'>
+      <mat-label>Pet photos</mat-label>
+      <mat-chip-list #chipLists aria-label='photo urls' multiple placeholder='Ex. https://photo.com/photo.jpg'>
+        <mat-chip
+          *ngFor='let url of urls'
+          [selected]='url'
+          [value]='url'
+          (removed)='removeChip(url, urls)'>
+          {{url}}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+      <input
+        placeholder='New photos...'
+        [matChipInputFor]='chipLists'
+        (matChipInputTokenEnd)='addChipFromInput($event, urls)'>
+      </mat-chip-list>
+    </mat-form-field>
+    <mat-form-field appearance='fill' class='chip-photos'>
+      <mat-label>Pet tags</mat-label>
+      <mat-chip-list #chipList aria-label='pet tags' multiple placeholder='Ex. friendly'>
+        <mat-chip
+          *ngFor='let tag of tags'
+          [selected]='tag'
+          [value]='tag'
+          (removed)='removeChip(tag, tags)'>
+          {{tag}}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+      <input
+        placeholder='New tags...'
+        [matChipInputFor]='chipList'
+        (matChipInputTokenEnd)='addChipFromInput($event, tags)'>
+      </mat-chip-list>
+    </mat-form-field>
+    <mat-form-field appearance='fill'>
+      <mat-label>Pet status</mat-label>
+      <mat-select
+        [(ngModel)]='status'
+        panelClass='dropdown-select'
+      >
+        <mat-option value='available'>Available</mat-option>
+        <mat-option value='pending'>Pending</mat-option>
+        <mat-option value='sold'>Sold</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button (click)='onNoClick()'>Close</button>
+    <button (click)='createPet()' [mat-dialog-close]='data.animal' cdkFocusInitial>Save</button>
+  </div>
+</ng-container>
+<ng-container *ngIf='data.id'>
+  <mat-card class='pets-info'>
+    <mat-card-header>
+      <mat-card-title> {{ data.name }} </mat-card-title>
+      <mat-card-subtitle> {{ data?.category?.name }} </mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]='petPhoto' [alt]='"Photo of " + data?.category?.name'>
+    <mat-card-content>
+      <p>
+        Status:
+        <span> {{ data.status}} </span>
+      </p>
+      Photos:
+      <ng-container *ngFor='let url of data.photoUrls'>
+        <button (click)='setPetPhoto(url)' class='chip-button' mat-button>{{ url }}</button>
+      </ng-container>
+    </mat-card-content>
+    <mat-card-actions>
+      Tags:
+      <ng-container *ngFor='let tag of data.tags'>
+        <button style='cursor: default' class='chip-button' mat-button> {{ tag.name }}</button>
+      </ng-container>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>

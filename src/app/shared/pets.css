@@ -1,0 +1,63 @@
+.nav-belt {
+  position: relative;
+  height: 103px;
+  font-family: Lato,sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.14;
+  letter-spacing: normal;
+  background-color: #77362a;
+}
+
+.logo {
+  height: 93px;
+  width: 113px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.accounts {
+  float: right;
+  color: beige;
+  margin: 35px;
+  cursor: pointer;
+}
+
+.accounts span {
+  margin-right: 15px;
+  vertical-align: top;
+  font-size: 12pt;
+  line-height: 12pt;
+}
+
+.page-container {
+  margin: 32px;
+  background-color: #fff;
+  padding: 15px 24px;
+  height: 100vh;
+}
+
+.filter-container {
+  text-align: center;
+}
+
+.table-container {
+  margin: 50px;
+  padding: 0 50px;
+}
+
+.table-container table {
+  width: 60%;
+}
+
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
+}

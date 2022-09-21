@@ -27,9 +27,13 @@ $petApp-theme: mat.define-light-theme((
     warn: $petApp-warn,
   )
 ));
+@import '@angular/material/theming';
+$custom-typography: mat-typography-config(
+  $font-family: 'Lato'
+);
 
+@include angular-material-typography($custom-typography);
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($petApp-theme);
-

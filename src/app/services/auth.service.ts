@@ -30,6 +30,7 @@ export class AuthService {
 
   login(username: string, password: string) {
     let headers = this.contentHeader();
+    // TODO: hide passwords from query strings as it's insecure
     let url = this.apiUrl + '/user/login' + `?username=${username}&password=${password}`;
     return this.http.get<ApiResponse>(url, { headers }).pipe(tap(
       (res)=> {
