@@ -25,6 +25,7 @@
       <input
         placeholder='New photos...'
         [matChipInputFor]='chipLists'
+        [matChipInputSeparatorKeyCodes]='separatorKeysCodes'
         (matChipInputTokenEnd)='addChipFromInput($event, urls)'>
       </mat-chip-list>
     </mat-form-field>
@@ -44,6 +45,7 @@
       <input
         placeholder='New tags...'
         [matChipInputFor]='chipList'
+        [matChipInputSeparatorKeyCodes]='separatorKeysCodes'
         (matChipInputTokenEnd)='addChipFromInput($event, tags)'>
       </mat-chip-list>
     </mat-form-field>

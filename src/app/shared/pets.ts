@@ -2,6 +2,7 @@ import { Inject, Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 
 import { Pet } from '../interfaces/index';
 import { PetsService } from '../services/index';
@@ -37,7 +38,6 @@ export class PetsComponent implements OnInit {
     const dialogs: any[] = [ PetsDialog ];
     const dialogRef = this.dialog.open(PetsDialog, {
       width: '500px',
-      'height': '50%',
       data: data,
     });
 
@@ -71,6 +71,7 @@ export class PetsDialog {
   category: string = '';
   name: string = '';
   @Output() onSave = new EventEmitter();
+  separatorKeysCodes: number[] = [ENTER, COMMA];
 
   setPetPhoto(url: string) {
     this.petPhoto = url;
