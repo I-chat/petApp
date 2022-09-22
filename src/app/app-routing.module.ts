@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LoginComponent, PetsComponent } from './shared/index';
+import { LoginComponent, PetsComponent } from './components/index';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },

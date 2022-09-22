@@ -17,7 +17,7 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent, PetsComponent, PetsDialog } from "./shared/index";
+import { LoginComponent, PetsComponent, PetsDialog } from "./components/index";
 import { AuthService, CookieService } from "./services/index";
 import { environment } from './../environments/environment';
 import { PetState } from './state/index';
