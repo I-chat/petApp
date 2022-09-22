@@ -11,12 +11,16 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent, PetsComponent, PetsDialog } from "./shared/index";
 import { AuthService, CookieService } from "./services/index";
-
+import { environment } from './../environments/environment';
+import { PetState } from './state/index';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,12 @@ import { AuthService, CookieService } from "./services/index";
     BrowserAnimationsModule,
     MatIconModule, MatCardModule,
     MatDialogModule,
-    DialogModule
+    DialogModule,
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot(),
+    NgxsModule.forRoot([PetState], {
+      developmentMode: !environment.production
+    })
   ],
   bootstrap: [AppComponent]
 })

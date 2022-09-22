@@ -3,8 +3,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Store, Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { MatTableDataSource } from '@angular/material/table';
+
 
 import { Pet } from '../interfaces/index';
+import { GetPetList, CreatePet } from '../actions/index';
+import { PetState } from '../state/index';
 import { PetsService } from '../services/index';
 
 
@@ -16,9 +22,14 @@ export class PetsComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private petsService: PetsService
-  ){}
+    private store: Store
+  ){
+    this.pets$.subscribe((pets: Pet[])=> {
+      this.pets = pets
+    })
+  }
   pets: Pet[] = [];
+  @Select(PetState.pets) pets$!: Observable<Pet[]>
   displayedColumns: string[] = ['name', 'status'];
   filter: 'available' | 'pending' | 'sold' = 'available'
 
@@ -27,11 +38,7 @@ export class PetsComponent implements OnInit {
   }
 
   getPetList (status: 'available' | 'pending' | 'sold' = 'available') {
-    return this.petsService.getPetList(status).subscribe(
-      (pets: Pet[]) => {
-        this.pets = pets
-      }
-    )
+    this.store.dispatch(new GetPetList(status))
   }
 
   openDialog(data: any): void {
@@ -59,7 +66,7 @@ export class PetsComponent implements OnInit {
 export class PetsDialog {
   constructor(
     private dialogRef: MatDialogRef<PetsDialog>,
-    private petsService: PetsService,
+    private store: Store,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
@@ -98,7 +105,7 @@ export class PetsDialog {
       tags: [...this.tags].map( (tag, index)=> { return {id: index, name: tag}}),
       category: {id: 0, name: this.category}
     }
-    this.petsService.createPet(this.pet).subscribe(
+    this.store.dispatch(new CreatePet(this.pet)).subscribe(
       (pet) => {
         this.pet = pet;
         this.onSave.emit(pet);
